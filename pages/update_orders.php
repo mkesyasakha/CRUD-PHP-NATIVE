@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
     // Update query SQL dengan prepared statement
-    $sql = "UPDATE orders SET customer_id=?, order_date=?, total=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
+    $sql = "UPDATE orders SET customer_id=?, order_date=? WHERE id=?";
+    $stmt = $conn->prepare($sql); 
     $stmt->bind_param("isii", $customer_id, $date, $id);
     
     if ($stmt->execute()) {

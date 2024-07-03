@@ -30,15 +30,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_insert->bind_param("s", $name);
 
         if ($stmt_insert->execute()) {
-            header("Location: view_categories.php");
+            echo "<script>alert('Category berhasil ditambahkan!'); window.location.href='view_categories.php';</script>";
             exit();
         } else {
-            echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt_insert->error . "</div>";
+            echo "<script>alert('Error: " . $stmt_insert->error . "');</script>";
         }
     } else {
         // Jika terdapat error, tampilkan pesan error
         foreach ($errors as $error) {
-            echo "<div class='alert alert-danger' role='alert'>$error</div>";
+            echo "<script>alert('$error');</script>";
         }
     }
 }

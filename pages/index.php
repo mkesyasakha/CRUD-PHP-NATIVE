@@ -13,7 +13,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.php">Home</a>
+        <a class="nav-link" href="rekap.php">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="view_customer.php">Customers</a>
@@ -26,9 +26,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="view_orders.php">Orders</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="view_order_details.php">Order Details</a>
       </li>
     </ul>
   </div>

@@ -45,7 +45,7 @@ if (!$result) {
                     echo "<td>" . $row["category_name"] . "</td>";
                     echo "<td>
                         <a href='update_products.php?id=" . $row["id"] . "' class='btn btn-warning'>Edit</a>
-                        <a href='delete_products.php?id=" . $row["id"] . "' class='btn btn-danger'>Delete</a>
+                        <a href='konfirmasi_p.php?id=" . $row["id"] . "' class='btn btn-danger'>Delete</a>
                         </td>";
                     echo "</tr>";
                 }

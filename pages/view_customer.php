@@ -30,7 +30,7 @@ $result = $conn->query($sql);
                     echo "<td>" . $row["email"] . "</td>";
                     echo "<td>
                         <a href='update_customer.php?id=" . $row["id"] . "' class='btn btn-warning'>Edit</a>
-                        <a href='delete_customer.php?id=" . $row["id"] . "' class='btn btn-danger'>Delete</a>
+                        <a href='konfirmasi_c.php?id=" . $row["id"] . "' class='btn btn-danger'>Delete</a>
                         </td>";
                     echo "</tr>";
                 }

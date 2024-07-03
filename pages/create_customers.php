@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result_name = $stmt_name->get_result();
 
         if ($result_email->num_rows > 0 || $result_name->num_rows > 0) {
-            // Jika email atau nama sudah ada, tampilkan alert
+            // Jika email atau nama sudah ada, tampilkan alert dari JavaScript
             echo "<script>alert('Email atau Nama sudah terdaftar!'); window.location.href = 'create_customers.php';</script>";
         } else {
             // Jika email belum ada, lakukan INSERT
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert->bind_param("ss", $name, $email);
 
             if ($stmt_insert->execute()) {
-                header("Location: view_customer.php");
+                echo "<script>alert('Customer berhasil ditambahkan!'); window.location.href = 'view_customer.php';</script>";
                 exit();
             } else {
                 echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt_insert->error . "</div>";
@@ -62,10 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <div class="container">
     <h2>Add Customer</h2>
-    <form method="POST" action="">
+    <form method="POST" action="" onsubmit="return validateForm();">
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" >
+            <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
@@ -74,5 +74,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-</body>
-</html>
+
+<script>
+    // JavaScript function to validate form before submission
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+
+        if (name.trim() === '') {
+            alert('Nama harus diisi');
+            return false;
+        }
+
+        if (email.trim() === '') {
+            alert('Email harus diisi');
+            return false;
+        }
+
+        return true;
+    }
+</script>

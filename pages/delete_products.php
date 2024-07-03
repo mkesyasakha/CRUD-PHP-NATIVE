@@ -6,23 +6,24 @@ try {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
-        // Hapus data customer
+        // Hapus data produk
         $sql = "DELETE FROM products WHERE id=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         
         if ($stmt->execute()) {
-            header("Location: view_products.php");
+            echo "<script>alert('Product successfully deleted.'); window.location.href='view_products.php';</script>";
+            exit(); // Exit agar script berhenti di sini setelah alert ditampilkan
         } else {
-            throw new Exception("Gagal menghapus customer: " . $stmt->error);
+            throw new Exception("Failed to delete product: " );
         }
 
         $stmt->close();
     } else {
-        throw new Exception("ID tidak ditemukan.");
+        throw new Exception("ID not found.");
     }
 } catch (Exception $e) {
-    echo "<script>alert('Gagal Menghapus Products'); window.location.href='view_products.php';</script>";
+    echo "<script>alert('Failed to delete product'); window.location.href='view_products.php';</script>";
 } finally {
     $conn->close();
 }
